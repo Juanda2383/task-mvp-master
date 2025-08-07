@@ -18,7 +18,7 @@ export default function TaskListScreen({ navigation }) {
       const tasksData = await AsyncStorage.getItem('TASKS');
       if (tasksData) setTasks(JSON.parse(tasksData));
     } catch (error) {
-      console.log('Error al cargar tareas', error);
+      console.log('Error al cargar llamada', error);
     }
   };
 
@@ -27,7 +27,7 @@ export default function TaskListScreen({ navigation }) {
       await AsyncStorage.setItem('TASKS', JSON.stringify(newTasks));
       setTasks(newTasks);
     } catch (error) {
-      console.log('Error al guardar tareas', error);
+      console.log('Error al guardar llamada', error);
     }
   };
 
@@ -60,17 +60,17 @@ export default function TaskListScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Button title="Agregar tarea" onPress={() => navigation.navigate('AddTask', { onAdd: loadTasks })} />
+      <Button title="Agregar llamada" onPress={() => navigation.navigate('AddTask', { onAdd: loadTasks })} />
       
       <View style={{ marginVertical: 10 }}>
         <Button
-          title={showFavorites ? "Mostrar todas las tareas" : "Mostrar solo favoritas"}
+          title={showFavorites ? "Mostrar todas las llamadas" : "Mostrar llamadas favoritas"}
           onPress={() => setShowFavorites(!showFavorites)}
         />
       </View>
 
       {tasks.length === 0 ? (
-        <Text style={{ marginTop: 20, fontSize: 18 }}>No hay tareas, agrega una.</Text>
+        <Text style={{ marginTop: 20, fontSize: 18 }}>No hay llamadas, agrega una.</Text>
       ) : (
         <FlatList
           data={sortedTasks}

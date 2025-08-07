@@ -33,14 +33,14 @@ export default function AddTaskScreen({ navigation, route }) {
 
       navigation.goBack();
     } catch (error) {
-      console.log('Error al guardar la tarea', error);
+      console.log('Error al guardar la llamada', error);
     }
   };
 
   return (
     <View style={styles.container}>
       <TextInput
-        placeholder="Título de la tarea"
+        placeholder="nombre llamada"
         style={styles.input}
         value={title}
         onChangeText={setTitle}
